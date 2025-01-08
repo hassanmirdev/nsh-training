@@ -1,0 +1,10 @@
+name: issues trigger
+run-name: explore trigger issues
+on:
+  issues
+jobs:
+  trigger-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ubuntu-server
+        run: echo "workflow successfully executed on ubuntu machine (github hosted)"
