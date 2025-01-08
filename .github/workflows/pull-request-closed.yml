@@ -1,0 +1,11 @@
+name: Pull Request closed Event
+on:
+  pull_request:
+    types: 
+     - closed
+jobs:
+  Build-triggers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step
+        run: echo "Pull Request closed Event"
