@@ -1,0 +1,12 @@
+name: Branch Filter Demo
+run-name: Branch Filter Demos
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ubuntu-platform
+        run: echo "Hello, I am exploting Branch filter Demo"
