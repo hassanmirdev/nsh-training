@@ -1,0 +1,11 @@
+name: schedule trigger
+run-name: schedule trigger
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight
+jobs:
+  echo-triggers:
+    runs-on: windows-latest
+    steps:
+      - name: first step
+        run: echo "windows-platform"
