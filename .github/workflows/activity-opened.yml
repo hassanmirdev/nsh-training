@@ -1,0 +1,11 @@
+name: Pull Request Opened Event
+on:
+  pull_request:
+    types: opened
+
+jobs:
+  Build-triggers:
+    runs-on: windows-latest
+    steps:
+      - name: first step
+        run: echo "windows-platform"
