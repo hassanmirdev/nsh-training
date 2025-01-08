@@ -1,0 +1,11 @@
+name: Pull Request labeled Event
+on:
+  pull_request:
+    types: 
+     - labeled
+jobs:
+  Build-triggers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step
+        run: echo "Pull Request labeled Event"
