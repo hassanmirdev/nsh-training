@@ -1,0 +1,10 @@
+name: manual trigger
+run-name: manual trigger
+on:
+  workflow_dispatch:
+jobs:
+  echo-triggers:
+    runs-on: windows-latest
+    steps:
+      - name: first step
+        run: echo "windows-platform"
