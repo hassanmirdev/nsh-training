@@ -5,6 +5,7 @@ on:
     branches-ignore:
       - feature
       - hassanmirdev-patch1
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
