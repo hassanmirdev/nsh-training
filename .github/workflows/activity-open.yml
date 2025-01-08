@@ -1,0 +1,11 @@
+name: issues
+run-name: issue
+on:
+  pull_request:
+    types: opened
+jobs:
+  echo-triggers:
+    runs-on: windows-latest
+    steps:
+      - name: first step
+        run: echo "windows-platform"
