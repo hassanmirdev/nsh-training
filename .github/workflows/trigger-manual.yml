@@ -1,7 +1,7 @@
-name: issues
-run-name: issue
+name: manual trigger
+run-name: manual trigger
 on:
-  issues:
+  workflow_dispatch:
 jobs:
   echo-triggers:
     runs-on: windows-latest

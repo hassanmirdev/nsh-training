@@ -1,7 +1,8 @@
-name: issues
-run-name: issue
+name: schedule trigger
+run-name: schedule trigger
 on:
-  issues:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight
 jobs:
   echo-triggers:
     runs-on: windows-latest

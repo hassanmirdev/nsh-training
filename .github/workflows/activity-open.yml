@@ -1,7 +1,8 @@
 name: issues
 run-name: issue
 on:
-  issues:
+  pull_request:
+    types: opened
 jobs:
   echo-triggers:
     runs-on: windows-latest
