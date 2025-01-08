@@ -1,7 +1,7 @@
-name: Trigger workflow- windows
-run-name: this workflow will run on windows server
+name: issues
+run-name: issue
 on:
-  push
+  issues:
 jobs:
   echo-triggers:
     runs-on: windows-latest
