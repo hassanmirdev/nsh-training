@@ -1,10 +1,9 @@
 name: Pull Request Opened Event
+run-name: Pull Request Opened Event
 on:
   pull_request:
     types: 
      - opened
-    branches:
-     - main
 jobs:
   Build-triggers:
     runs-on: windows-latest
