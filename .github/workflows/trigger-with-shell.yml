@@ -1,0 +1,11 @@
+name: Trigger workflow- windows
+run-name: this workflow will run on windows server
+on:
+  push
+jobs:
+  echo-triggers:
+    runs-on: windows-latest
+    steps:
+      - name: first step
+        shell: bash
+        run: echo "windows-platform"
