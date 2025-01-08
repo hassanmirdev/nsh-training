@@ -1,0 +1,13 @@
+name: Branch ignore Filter Demo
+run-name: Branch ignore Filter Demos
+on:
+  push:
+    branches-ignore:
+      - feature
+      - hassanmirdev-patch1
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ubuntu-platform
+        run: echo "Hello, I am exploring Branch ignore filter Demo"
