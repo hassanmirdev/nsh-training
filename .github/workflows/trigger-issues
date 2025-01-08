@@ -1,7 +1,7 @@
 name: issues trigger
 run-name: explore trigger issues
 on:
-  issues
+  issues:
 jobs:
   trigger-build:
     runs-on: ubuntu-latest
