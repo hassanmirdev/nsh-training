@@ -1,0 +1,10 @@
+name: pull request work flow
+run-name: this workflow will run on ubuntu
+on:
+  pull_request
+jobs:
+  echo-triggers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step
+        run: echo "ubuntu-platform"
