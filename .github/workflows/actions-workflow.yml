@@ -1,0 +1,21 @@
+name: actions workflow
+run-name: actions workflow demo
+on:
+  workflow_dispatch:
+jobs:
+  actions-demo:
+    runs-on: ubuntu-latest
+    steps:
+     - name: code checkout
+       uses: actions/checkout@v2
+     - name: Setup Java JDK
+       uses: actions/setup-java@v4.6.0
+       with:
+         java-version: '17'
+         distribution: oracle
+        
+        
+        
+     
+  
+  
