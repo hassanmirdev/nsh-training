@@ -1,19 +1,25 @@
 name: Deployment Event Workflow
 
+# Trigger the workflow when a deployment is created
 on:
- deployment:
-  types: [created, updated]
-  environments: 
-   - production
-   - staging
+  deployment:
+    types:
+      - created  # Trigger when a deployment is created
 
 jobs:
-  deployment-job:
-    runs-on: ubuntu-latest
-
+  deployment:
+    runs-on: ubuntu-latest  # The job will run on the latest Ubuntu environment
+    
     steps:
-      - name: Print deployment details
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Checkout code
+
+      - name: Deployment triggered by event
         run: |
-          echo "Deployment event type: ${{ github.event.action }}"
-          echo "Deployment environment: ${{ github.event.deployment.environment }}"
-          echo "Deployment status: ${{ github.event.deployment.status }}"
+          echo "Deployment event triggered!"
+          echo "You can run deployment tasks here, e.g., SSH or API calls."
+          
+      - name: Notify team (optional)
+        run: |
+          echo "Sending notifications about deployment..."
+          # You can use Slack, email, or other services for notifications here.
