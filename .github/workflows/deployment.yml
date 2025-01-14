@@ -1,7 +1,7 @@
 name: Deployment
 run-name: Deployment
 on:
-  deployment:
+ workflow_dispatch:
 jobs:
   Dev_job: 
    runs-on: ubuntu-latest
