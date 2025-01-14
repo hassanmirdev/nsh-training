@@ -1,9 +1,10 @@
 name: protection-rule
 run-name: protection-rule
 on:
+  deployment:
  #workflow_dispatch:
- branch_protection_rule:
-    types: [created, deleted]
+ #branch_protection_rule:
+  # types: [created, deleted]
 jobs:
   Dev_job: 
    runs-on: ubuntu-latest
