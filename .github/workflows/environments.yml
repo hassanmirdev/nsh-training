@@ -1,4 +1,4 @@
-name: run job on different environments
+name: protection-rule
 run-name: protection-rule
 on:
  #workflow_dispatch:
