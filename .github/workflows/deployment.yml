@@ -1,25 +1,39 @@
-name: Deployment Event Workflow
-
-# Trigger the workflow when a deployment is created
+name: protection-rule
+run-name: protection-rule
 on:
   deployment:
-    types:
-      - created  # Trigger when a deployment is created
-
 jobs:
-  deployment:
-    runs-on: ubuntu-latest  # The job will run on the latest Ubuntu environment
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3  # Checkout code
+  Dev_job: 
+   runs-on: ubuntu-latest
+   environment: DEV
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in Development"
+       echo "My secrect is ${{ secrets.mysecret }}"
 
-      - name: Deployment triggered by event
-        run: |
-          echo "Deployment event triggered!"
-          echo "You can run deployment tasks here, e.g., SSH or API calls."
-          
-      - name: Notify team (optional)
-        run: |
-          echo "Sending notifications about deployment..."
-          # You can use Slack, email, or other services for notifications here.
+  QA_job: 
+   runs-on: ubuntu-latest
+   environment: QA
+   needs: Dev_job
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in QA"
+       echo "My secrect is ${{ secrets.mysecret }}"
+
+  
+  Prod_job: 
+   runs-on: ubuntu-latest
+   environment: PROD
+   needs: QA_job
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in production"
+       
+  
+ 
