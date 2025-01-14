@@ -11,6 +11,7 @@ jobs:
     - name: run scripts
       run: |
        echo "I am running a job in Development"
+       echo "My secrect is $ {{ secrets.mysecret }}"
 
   QA_job: 
    runs-on: ubuntu-latest
