@@ -1,11 +1,13 @@
-name: First workflow
+name: Discussion workflow
 run-name: First workflow in github actions
 on:
  discussion:
-  types: created
+  types: [ created, edited ]
 jobs:
   echo-build:
     runs-on: ubuntu-latest
     steps:
       - name: first step
-        run: echo "First Workflow"
+        run: | 
+         echo "First Workflow"
+         echo "Discussion edited"
