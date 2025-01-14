@@ -1,11 +1,11 @@
 name: environments
 
-# Trigger the workflow on push to the main or develop branches
+# Trigger the workflow on push to the main or dev branches
 on:
   push:
     branches:
       - main    # Deploy to production
-      - develop # Deploy to staging
+      - dev     # Deploy to staging
 
 jobs:
   deploy:
@@ -41,7 +41,7 @@ jobs:
             # Replace this with your actual production deployment command
             # e.g., AWS, GCP, Heroku CLI commands, etc.
             curl -X POST -d '{"deployment": "production"}' https://your-production-api.com/deploy
-          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+          elif [[ "${GITHUB_REF}" == "refs/heads/dev" ]]; then
             echo "Deploying to staging..."
             # Replace this with your actual staging deployment command
             # e.g., AWS, GCP, Heroku CLI commands, etc.
