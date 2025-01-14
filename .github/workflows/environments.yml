@@ -1,7 +1,9 @@
 name: run job on different environments
 run-name: environments
 on:
- workflow_dispatch:
+ #workflow_dispatch:
+ branch_protection_rule:
+    types: [created, deleted]
 jobs:
   Dev_job: 
    runs-on: ubuntu-latest
