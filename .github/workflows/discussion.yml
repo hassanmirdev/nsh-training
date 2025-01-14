@@ -1,8 +1,10 @@
 name: Discussion workflow
 run-name: First workflow in github actions
 on:
- discussion:
-  types: [ created, edited ]
+  discussion_comment:
+    types: [created, deleted]
+ # discussion:
+ # types: [ created, edited ]
 jobs:
   echo-build:
     runs-on: ubuntu-latest
