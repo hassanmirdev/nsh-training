@@ -24,7 +24,7 @@ jobs:
   
   Prod_job: 
    runs-on: ubuntu-latest
-   environment: QA
+   environment: PROD
    needs: QA_job
    steps:
     - uses: actions/checkout@v1
