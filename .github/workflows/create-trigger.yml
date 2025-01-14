@@ -1,0 +1,19 @@
+name: Branch or Tag Created
+
+on:
+  create:
+    branches: 
+      - '*'
+    tags:
+      - '*'
+
+jobs:
+  run-on-create:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the ref type and ref name
+        run: |
+          echo "The created ref type is: ${{ github.event.ref_type }}"
+          echo "The created ref is: ${{ github.event.ref }}"
+          echo "Branches and tags created successfully"
