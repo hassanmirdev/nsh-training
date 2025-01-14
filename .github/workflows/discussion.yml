@@ -2,7 +2,7 @@ name: Discussion workflow
 run-name: First workflow in github actions
 on:
   discussion_comment:
-    types: [created, deleted]
+   types: [created, deleted]
  # discussion:
  # types: [ created, edited ]
 jobs:
