@@ -1,5 +1,5 @@
-name: protection-rule
-run-name: protection-rule
+name: Deployment
+run-name: Deployment
 on:
   deployment:
 jobs:
