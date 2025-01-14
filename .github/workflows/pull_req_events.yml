@@ -1,0 +1,78 @@
+name: Pull Request Events
+
+on:
+  pull_request:
+    types: 
+      - assigned
+      - unassigned
+      - labeled
+      - unlabeled
+      - opened
+      - edited
+      - closed
+      - reopened
+      - synchronize
+      - converted_to_draft
+      - locked
+      - unlocked
+      - enqueued
+      - dequeued
+      - milestoned
+      - demilestoned
+      - ready_for_review
+      - review_requested
+      - review_request_removed
+      - auto_merge_enabled
+      - auto_merge_disabled
+
+jobs:
+  handle-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the event action and pull request details
+        run: |
+          echo "Pull Request Event: ${{ github.event.action }}"
+          echo "Pull Request Title: ${{ github.event.pull_request.title }}"
+          echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
+          echo "Pull Request Author: ${{ github.event.pull_request.user.login }}"
+          echo "Pull Request State: ${{ github.event.pull_request.state }}"
+        
+      - name: Example Action on Assigned or Unassigned Event
+        if: github.event.action == 'assigned' || github.event.action == 'unassigned'
+        run: |
+          echo "This is a pull request assignment or unassignment event."
+          echo "Action: ${{ github.event.action }}"
+          echo "Assigned to: ${{ github.event.pull_request.assignees }}"
+        
+      - name: Example Action on Labeled or Unlabeled Event
+        if: github.event.action == 'labeled' || github.event.action == 'unlabeled'
+        run: |
+          echo "This is a pull request label event."
+          echo "Action: ${{ github.event.action }}"
+          echo "Label: ${{ github.event.label.name }}"
+        
+      - name: Example Action on Opened or Edited Event
+        if: github.event.action == 'opened' || github.event.action == 'edited'
+        run: |
+          echo "This is a pull request opened or edited event."
+          echo "Action: ${{ github.event.action }}"
+        
+      - name: Example Action on Closed or Reopened Event
+        if: github.event.action == 'closed' || github.event.action == 'reopened'
+        run: |
+          echo "This is a pull request closed or reopened event."
+          echo "Action: ${{ github.event.action }}"
+        
+      - name: Example Action on Auto Merge Event
+        if: github.event.action == 'auto_merge_enabled' || github.event.action == 'auto_merge_disabled'
+        run: |
+          echo "This is a pull request auto-merge event."
+          echo "Action: ${{ github.event.action }}"
+        
+      - name: Example Action on Review Requested or Review Request Removed
+        if: github.event.action == 'review_requested' || github.event.action == 'review_request_removed'
+        run: |
+          echo "This is a pull request review event."
+          echo "Action: ${{ github.event.action }}"
+          echo "Reviewer: ${{ github.event.requested_reviewers[0].login }}"
