@@ -29,10 +29,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-      # Step 4: Build the project (adjust this for your project)
-    - name: Build the project
-      run: npm run build
-
       # Step 5: Deploy to the appropriate environment (staging or production)
     - name: Deploy to ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }} environment
       run: |
@@ -52,8 +48,4 @@ jobs:
     - name: Clean up
       run: echo "Deployment completed!"
 
-    # Step 7: Use environment-specific secrets and variables
-    env:
-      NODE_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}  # Set NODE_ENV based on branch
-      API_KEY: ${{ secrets.API_KEY }}  # Use the environment secret
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}  # Use the environment secret
+    
