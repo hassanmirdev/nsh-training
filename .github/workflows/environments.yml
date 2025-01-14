@@ -11,7 +11,7 @@ jobs:
     - name: run scripts
       run: |
        echo "I am running a job in Development"
-       echo "My secrect is $ {{ secrets.mysecret }}"
+       echo "My secrect is ${{ secrets.mysecret }}"
 
   QA_job: 
    runs-on: ubuntu-latest
@@ -22,7 +22,7 @@ jobs:
     - name: run scripts
       run: |
        echo "I am running a job in QA"
-       echo "My secrect is $ {{ secrets.mysecret }}"
+       echo "My secrect is ${{ secrets.mysecret }}"
 
   
   Prod_job: 
