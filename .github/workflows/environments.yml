@@ -22,6 +22,8 @@ jobs:
     - name: run scripts
       run: |
        echo "I am running a job in QA"
+       echo "My secrect is $ {{ secrets.mysecret }}"
+
   
   Prod_job: 
    runs-on: ubuntu-latest
