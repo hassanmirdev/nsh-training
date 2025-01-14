@@ -1,0 +1,36 @@
+name: run job on different environments
+run-name: environments
+on:
+ workflow_dispatch:
+jobs:
+  Dev_job: 
+   runs-on: ubuntu-latest
+   environment: DEV
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in Development"
+
+  QA_job: 
+   runs-on: ubuntu-latest
+   environment: QA
+   needs: Dev_job
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in QA"
+  
+  Prod_job: 
+   runs-on: ubuntu-latest
+   environment: QA
+   needs: QA_job
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in production"
+       
+  
+ 
