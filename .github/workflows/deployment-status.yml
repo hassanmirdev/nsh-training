@@ -1,0 +1,39 @@
+name: deployment status
+run-name: deployment status
+on:
+  deployment_status:
+jobs:
+  Dev_job: 
+   runs-on: ubuntu-latest
+   environment: DEV
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in Development"
+       echo "My secrect is ${{ secrets.mysecret }}"
+
+  QA_job: 
+   runs-on: ubuntu-latest
+   environment: QA
+   needs: Dev_job
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in QA"
+       echo "My secrect is ${{ secrets.mysecret }}"
+
+  
+  Prod_job: 
+   runs-on: ubuntu-latest
+   environment: PROD
+   needs: QA_job
+   steps:
+    - uses: actions/checkout@v1
+    - name: run scripts
+      run: |
+       echo "I am running a job in production"
+       
+  
+ 
