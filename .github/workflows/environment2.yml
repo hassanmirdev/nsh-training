@@ -1,0 +1,59 @@
+name: environments
+
+# Trigger the workflow on push to the main or develop branches
+on:
+  push:
+    branches:
+      - main    # Deploy to production
+      - develop # Deploy to staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    # Define the environment dynamically based on the branch
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (or any other runtime you need)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the project (adjust this for your project)
+      - name: Build the project
+        run: npm run build
+
+      # Step 5: Deploy to the appropriate environment (staging or production)
+      - name: Deploy to ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }} environment
+        run: |
+          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "Deploying to production..."
+            # Replace this with your actual production deployment command
+            # e.g., AWS, GCP, Heroku CLI commands, etc.
+            curl -X POST -d '{"deployment": "production"}' https://your-production-api.com/deploy
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            echo "Deploying to staging..."
+            # Replace this with your actual staging deployment command
+            # e.g., AWS, GCP, Heroku CLI commands, etc.
+            curl -X POST -d '{"deployment": "staging"}' https://your-staging-api.com/deploy
+          fi
+
+    # Step 6: Optional clean up or notify after deployment
+    - name: Clean up
+      run: echo "Deployment completed!"
+
+    # Step 7: Use environment-specific secrets and variables
+    env:
+      NODE_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}  # Set NODE_ENV based on branch
+      API_KEY: ${{ secrets.API_KEY }}  # Use the environment secret
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}  # Use the environment secret
