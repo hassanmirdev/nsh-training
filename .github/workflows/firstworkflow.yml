@@ -1,7 +1,8 @@
 name: First workflow
 run-name: First workflow in github actions
 on:
-  push
+ discussion:
+  types: created
 jobs:
   echo-build:
     runs-on: ubuntu-latest
