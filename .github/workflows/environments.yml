@@ -1,5 +1,5 @@
 name: run job on different environments
-run-name: environments
+run-name: protection-rule
 on:
  #workflow_dispatch:
  branch_protection_rule:
